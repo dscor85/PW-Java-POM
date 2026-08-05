@@ -78,8 +78,21 @@ public class PlaywrightFactory {
 //		page.navigate(prop.getProperty("url").trim());
 //		return page;
 		tlBrowserContext.set(getBrowser().newContext());
+		
 		tlPage.set(getBrowserContext().newPage());
-		getPage().navigate(prop.getProperty("url").trim());
+		//for CI
+		getPage().setDefaultTimeout(60000);
+		getPage().setDefaultNavigationTimeout(60000);
+		
+//		getPage().navigate(prop.getProperty("url").trim());
+		
+		//for CI
+		getPage().navigate(
+			    prop.getProperty("url").trim(),
+			    new Page.NavigateOptions()
+			        .setWaitUntil(com.microsoft.playwright.options.WaitUntilState.DOMCONTENTLOADED)
+			        .setTimeout(60000)
+			);
 		return getPage();
 
 	}
@@ -113,7 +126,7 @@ public class PlaywrightFactory {
 		String path = System.getProperty("user.dir") + "/screenshot/" + System.currentTimeMillis() + ".png";
 		//getPage().screenshot(new Page.ScreenshotOptions().setPath(Paths.get(path)).setFullPage(true));
 		
-		byte[] buffer = getPage().screenshot(new Page.ScreenshotOptions().setPath(Paths.get(path)).setFullPage(true));
+		byte[] buffer = getPage().screenshot(new Page.ScreenshotOptions().setPath(Paths.get(path)).setFullPage(true).setTimeout(10000));
 		String base64Path = Base64.getEncoder().encodeToString(buffer);
 		
 		return base64Path;
