@@ -138,12 +138,12 @@
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Open_Cart_Test_Regression_PW_Suite" title="com.qa.opencart.tests.HomePageTest" class="method navigator-link" hash-for-method="searchTest(iMac)">searchTest(iMac)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Open_Cart_Test_Regression_PW_Suite" title="com.qa.opencart.tests.HomePageTest" class="method navigator-link" hash-for-method="searchTest(Samsung)">searchTest(Samsung)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Open_Cart_Test_Regression_PW_Suite" title="com.qa.opencart.tests.HomePageTest" class="method navigator-link" hash-for-method="searchTest(Samsung)">searchTest(Samsung)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Open_Cart_Test_Regression_PW_Suite" title="com.qa.opencart.tests.HomePageTest" class="method navigator-link" hash-for-method="searchTest(iMac)">searchTest(iMac)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -229,18 +229,18 @@
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="searchTest(iMac)">
-                  </a> <!-- searchTest(iMac) -->
-                  <span class="method-name">searchTest</span>
-                  <span class="parameters">(iMac)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
                   <a name="searchTest(Samsung)">
                   </a> <!-- searchTest(Samsung) -->
                   <span class="method-name">searchTest</span>
                   <span class="parameters">(Samsung)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="searchTest(iMac)">
+                  </a> <!-- searchTest(iMac) -->
+                  <span class="method-name">searchTest</span>
+                  <span class="parameters">(iMac)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -284,16 +284,16 @@
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite thread-count=&quot;1&quot; parallel=&quot;tests&quot; name=&quot;Open Cart Test Regression PW Suite&quot; verbose=&quot;4&quot;&gt;
+&lt;suite thread-count=&quot;2&quot; parallel=&quot;tests&quot; name=&quot;Open Cart Test Regression PW Suite&quot; verbose=&quot;4&quot;&gt;
   &lt;listeners&gt;
     &lt;listener class-name=&quot;com.qa.opencart.listeners.ExtentReportListener&quot;/&gt;
   &lt;/listeners&gt;
-  &lt;test thread-count=&quot;1&quot; parallel=&quot;tests&quot; name=&quot;Open Cart Home Page Test&quot; verbose=&quot;4&quot;&gt;
+  &lt;test thread-count=&quot;2&quot; parallel=&quot;tests&quot; name=&quot;Open Cart Home Page Test&quot; verbose=&quot;4&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;com.qa.opencart.tests.HomePageTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Open Cart Home Page Test --&gt;
-  &lt;test thread-count=&quot;1&quot; parallel=&quot;tests&quot; name=&quot;Open Cart Login Page Test&quot; verbose=&quot;4&quot;&gt;
+  &lt;test thread-count=&quot;2&quot; parallel=&quot;tests&quot; name=&quot;Open Cart Login Page Test&quot; verbose=&quot;4&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;com.qa.opencart.tests.LoginPageTest&quot;/&gt;
     &lt;/classes&gt;
@@ -340,29 +340,29 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(8);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'loginPageNavigationTest')
-data.setCell(0, 2, 'com.qa.opencart.tests.LoginPageTest')
-data.setCell(0, 3, 332);
+data.setCell(0, 1, 'searchTest')
+data.setCell(0, 2, 'com.qa.opencart.tests.HomePageTest')
+data.setCell(0, 3, 1421);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'searchTest')
 data.setCell(1, 2, 'com.qa.opencart.tests.HomePageTest')
-data.setCell(1, 3, 316);
+data.setCell(1, 3, 1321);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'searchTest')
-data.setCell(2, 2, 'com.qa.opencart.tests.HomePageTest')
-data.setCell(2, 3, 275);
+data.setCell(2, 1, 'loginPageNavigationTest')
+data.setCell(2, 2, 'com.qa.opencart.tests.LoginPageTest')
+data.setCell(2, 3, 1128);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'appLoginTest')
-data.setCell(3, 2, 'com.qa.opencart.tests.LoginPageTest')
-data.setCell(3, 3, 259);
+data.setCell(3, 1, 'searchTest')
+data.setCell(3, 2, 'com.qa.opencart.tests.HomePageTest')
+data.setCell(3, 3, 714);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'searchTest')
-data.setCell(4, 2, 'com.qa.opencart.tests.HomePageTest')
-data.setCell(4, 3, 253);
+data.setCell(4, 1, 'appLoginTest')
+data.setCell(4, 2, 'com.qa.opencart.tests.LoginPageTest')
+data.setCell(4, 3, 490);
 data.setCell(5, 0, 5)
 data.setCell(5, 1, 'homePageTitleTest')
 data.setCell(5, 2, 'com.qa.opencart.tests.HomePageTest')
-data.setCell(5, 3, 20);
+data.setCell(5, 3, 36);
 data.setCell(6, 0, 6)
 data.setCell(6, 1, 'forgotPasswordLinkExistTest')
 data.setCell(6, 2, 'com.qa.opencart.tests.LoginPageTest')
@@ -370,12 +370,12 @@ data.setCell(6, 3, 12);
 data.setCell(7, 0, 7)
 data.setCell(7, 1, 'homePageURLTest')
 data.setCell(7, 2, 'com.qa.opencart.tests.HomePageTest')
-data.setCell(7, 3, 1);
+data.setCell(7, 3, 2);
 window.suiteTableData['Open_Cart_Test_Regression_PW_Suite']= { tableData: data, tableDiv: 'times-div-Open_Cart_Test_Regression_PW_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 7 seconds</span>
+              <span class="suite-total-time">Total running time: 11 seconds</span>
               <div id="times-div-Open_Cart_Test_Regression_PW_Suite">
               </div> <!-- times-div-Open_Cart_Test_Regression_PW_Suite -->
             </div> <!-- times-div -->
@@ -406,54 +406,69 @@ return data;
                 <span class="method-name">setup</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-test before -->
-              <div class="test-method">
-                <span class="method-name">homePageTitleTest</span>
-                <span class="method-start">6454 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">homePageURLTest</span>
-                <span class="method-start">6483 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">searchTest(Macbook)</span>
-                <span class="method-start">6490 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">searchTest(iMac)</span>
-                <span class="method-start">6808 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">searchTest(Samsung)</span>
-                <span class="method-start">7084 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-test after">
-                <span class="method-name">tearDown</span>
-                <span class="method-start">7340 ms</span>
-              </div> <!-- configuration-test after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">com.qa.opencart.tests.LoginPageTest</div> <!-- chronological-class-name -->
               <div class="configuration-test before">
                 <span class="method-name">setup</span>
-                <span class="method-start">7603 ms</span>
+                <span class="method-start">0 ms</span>
               </div> <!-- configuration-test before -->
               <div class="test-method">
                 <span class="method-name">loginPageNavigationTest</span>
-                <span class="method-start">8469 ms</span>
+                <span class="method-start">7357 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.qa.opencart.tests.HomePageTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">homePageTitleTest</span>
+                <span class="method-start">7599 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
+                <span class="method-name">homePageURLTest</span>
+                <span class="method-start">7644 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">searchTest(Macbook)</span>
+                <span class="method-start">7653 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.qa.opencart.tests.LoginPageTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
                 <span class="method-name">forgotPasswordLinkExistTest</span>
-                <span class="method-start">8803 ms</span>
+                <span class="method-start">8490 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">appLoginTest</span>
-                <span class="method-start">8817 ms</span>
+                <span class="method-start">8504 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.qa.opencart.tests.HomePageTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">searchTest(iMac)</span>
+                <span class="method-start">8979 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.qa.opencart.tests.LoginPageTest</div> <!-- chronological-class-name -->
+              <div class="configuration-test after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">9216 ms</span>
+              </div> <!-- configuration-test after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.qa.opencart.tests.HomePageTest</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">searchTest(Samsung)</span>
+                <span class="method-start">9878 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-test after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">9147 ms</span>
+                <span class="method-start">11300 ms</span>
               </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
