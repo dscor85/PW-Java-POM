@@ -6,7 +6,7 @@ on:
       role:
         description: 'Role'
         required: true
-        default: 'user'
+        default: 'admin'
         type: choice
         options:
           - admin
