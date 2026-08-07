@@ -101,20 +101,73 @@ public class PlaywrightFactory {
 	 * 
 	 */
 
+//	public Properties init_prop() {
+//
+//		try {
+//			FileInputStream ip = new FileInputStream("./src/test/resources/config/config.properties");
+//			prop = new Properties();
+//			prop.load(ip);
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//
+//		return prop;
+//
+//	}
+	
 	public Properties init_prop() {
 
-		try {
-			FileInputStream ip = new FileInputStream("./src/test/resources/config/config.properties");
-			prop = new Properties();
-			prop.load(ip);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	    try {
 
-		return prop;
+	        // Load config.properties
+	        FileInputStream configIp =
+	                new FileInputStream("./src/test/resources/config/config.properties");
 
+	        prop = new Properties();
+	        prop.load(configIp);
+
+	        // Load credentials.properties if present
+	        Properties credProp = new Properties();
+
+	        try {
+	            FileInputStream credIp =
+	                    new FileInputStream("./src/test/resources/config/credentials.properties");
+
+	            credProp.load(credIp);
+
+	            prop.setProperty("username",
+	                    credProp.getProperty("username"));
+
+	            prop.setProperty("password",
+	                    credProp.getProperty("password"));
+
+	            System.out.println("Using credentials from credentials.properties");
+
+	        } catch (FileNotFoundException e) {
+	            System.out.println("credentials.properties not found. Checking environment variables...");
+	        }
+
+	        // GitHub Secrets override everything
+	        String githubUser = System.getenv("OPENCART_USERNAME");
+	        String githubPassword = System.getenv("OPENCART_PASSWORD");
+
+	        if (githubUser != null && !githubUser.isBlank()) {
+	            prop.setProperty("username", githubUser);
+	            System.out.println("Using username from GitHub Secret");
+	        }
+
+	        if (githubPassword != null && !githubPassword.isBlank()) {
+	            prop.setProperty("password", githubPassword);
+	            System.out.println("Using password from GitHub Secret");
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return prop;
 	}
 	
 	/**

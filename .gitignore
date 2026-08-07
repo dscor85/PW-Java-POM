@@ -1,0 +1,15 @@
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Maven
+target/
+
+# Playwright
+playwright-report/
+test-results/
+
+# Auth state files
+auth.json
+storageState.json
