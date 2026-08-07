@@ -62,6 +62,7 @@ jobs:
           
         run: |
           mvn test \
+          -Drole=${{ github.event.inputs.role }} \
           -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regressions.xml
 
       - name: Upload TestNG Reports
