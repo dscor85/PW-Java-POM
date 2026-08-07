@@ -45,6 +45,9 @@ jobs:
           mvn exec:java -Dexec.mainClass=com.microsoft.playwright.CLI -Dexec.args="install --with-deps"
 
       - name: Run TestNG Suite
+        env:
+          OPENCART_USERNAME: ${{ secrets.OPENCART_USERNAME }}
+          OPENCART_PASSWORD: ${{ secrets.OPENCART_PASSWORD }}
         run: |
           mvn test \
           -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regressions.xml
