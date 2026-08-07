@@ -6,9 +6,9 @@
 # Maven
 target/
 
-# Playwright
+# TestNG Reports
+test-output/
 extent-reports/
-test-results/
 
 # Screenshots
 screenshot/
