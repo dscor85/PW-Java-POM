@@ -7,9 +7,19 @@
 target/
 
 # Playwright
-playwright-report/
+extent-reports/
 test-results/
+
+# Screenshots
+screenshot/
 
 # Auth state files
 auth.json
 storageState.json
+
+# Local credentials
+src/test/resources/config/credentials.properties
+
+# OS files
+.DS_Store
+Thumbs.db
