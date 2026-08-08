@@ -98,7 +98,7 @@ public class PlaywrightFactory {
 	}
 
 	/**
-	 * 
+	 * initial
 	 */
 
 //	public Properties init_prop() {
@@ -117,58 +117,217 @@ public class PlaywrightFactory {
 //
 //	}
 	
+	//github and local working for 1
+//	public Properties init_prop() {
+//
+//	    try {
+//
+//	        // Load config.properties
+//	        FileInputStream configIp =
+//	                new FileInputStream("./src/test/resources/config/config.properties");
+//
+//	        prop = new Properties();
+//	        prop.load(configIp);
+//
+//	        // Load credentials.properties if present
+//	        Properties credProp = new Properties();
+//
+//	        try {
+//	            FileInputStream credIp =
+//	                    new FileInputStream("./src/test/resources/config/credentials.properties");
+//
+//	            credProp.load(credIp);
+//
+//	            prop.setProperty("username",
+//	                    credProp.getProperty("username"));
+//
+//	            prop.setProperty("password",
+//	                    credProp.getProperty("password"));
+//
+//	            System.out.println("Using credentials from credentials.properties");
+//
+//	        } catch (FileNotFoundException e) {
+//	            System.out.println("credentials.properties not found. Checking environment variables...");
+//	        }
+//
+//	        // GitHub Secrets override everything
+//	        String githubUser = System.getenv("OPENCART_USERNAME");
+//	        String githubPassword = System.getenv("OPENCART_PASSWORD");
+//
+//	        if (githubUser != null && !githubUser.isBlank()) {
+//	            prop.setProperty("username", githubUser);
+//	            System.out.println("Using username from GitHub Secret");
+//	        }
+//
+//	        if (githubPassword != null && !githubPassword.isBlank()) {
+//	            prop.setProperty("password", githubPassword);
+//	            System.out.println("Using password from GitHub Secret");
+//	        }
+//
+//	    } catch (Exception e) {
+//	        e.printStackTrace();
+//	    }
+//
+//	    return prop;
+//	}
+	
+	//final
+//	public Properties init_prop() {
+//
+//		try {
+//
+//			// Load config.properties
+//			FileInputStream configIp =
+//					new FileInputStream("./src/test/resources/config/config.properties");
+//
+//			prop = new Properties();
+//			prop.load(configIp);
+//
+//			// Default role = user
+////			String role = System.getProperty("role", "user");
+//			String role = System.getProperty("role");
+//
+//			if(role == null || role.isBlank()) {
+//			    role = prop.getProperty("role", "user");
+//			}
+//
+//			System.out.println("Executing tests with role: " + role);
+//
+//			// Load local credentials.properties
+//			try {
+//
+//				FileInputStream credIp =
+//						new FileInputStream("./src/test/resources/config/credentials.properties");
+//
+//				Properties credProp = new Properties();
+//				credProp.load(credIp);
+//
+//				prop.setProperty("username",
+//						credProp.getProperty(role + ".username"));
+//
+//				prop.setProperty("password",
+//						credProp.getProperty(role + ".password"));
+//
+//				System.out.println("Using local credentials.properties");
+//				System.out.println("Username selected: " + prop.getProperty("username"));
+//
+//			} catch (FileNotFoundException e) {
+//
+//				System.out.println("credentials.properties not found");
+//			}
+//
+//			// GitHub Secrets override local credentials
+//			String githubUser = System.getenv(role.toUpperCase() + "_USERNAME");
+//			String githubPassword = System.getenv(role.toUpperCase() + "_PASSWORD");
+//
+//			if (githubUser != null && !githubUser.isBlank()) {
+//
+//				prop.setProperty("username", githubUser);
+//
+//				System.out.println("Using GitHub username for role: " + role);
+//			}
+//
+//			if (githubPassword != null && !githubPassword.isBlank()) {
+//
+//				prop.setProperty("password", githubPassword);
+//
+//				System.out.println("Using GitHub password for role: " + role);
+//			}
+//
+//			// Validation
+//			if (prop.getProperty("username") == null ||
+//				prop.getProperty("password") == null) {
+//
+//				throw new RuntimeException(
+//					"Credentials not found for role: " + role);
+//			}
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//		return prop;
+//	}
+	 //print which user
 	public Properties init_prop() {
 
-	    try {
+		try {
 
-	        // Load config.properties
-	        FileInputStream configIp =
-	                new FileInputStream("./src/test/resources/config/config.properties");
+			// Load config.properties
+			FileInputStream configIp =
+					new FileInputStream("./src/test/resources/config/config.properties");
 
-	        prop = new Properties();
-	        prop.load(configIp);
+			prop = new Properties();
+			prop.load(configIp);
 
-	        // Load credentials.properties if present
-	        Properties credProp = new Properties();
+			// Determine role
+			String role = System.getProperty("role");
 
-	        try {
-	            FileInputStream credIp =
-	                    new FileInputStream("./src/test/resources/config/credentials.properties");
+			if (role == null || role.isBlank()) {
+				role = prop.getProperty("role", "user");
+			}
 
-	            credProp.load(credIp);
+			// Load local credentials.properties
+			try {
 
-	            prop.setProperty("username",
-	                    credProp.getProperty("username"));
+				FileInputStream credIp =
+						new FileInputStream("./src/test/resources/config/credentials.properties");
 
-	            prop.setProperty("password",
-	                    credProp.getProperty("password"));
+				Properties credProp = new Properties();
+				credProp.load(credIp);
 
-	            System.out.println("Using credentials from credentials.properties");
+				prop.setProperty("username",
+						credProp.getProperty(role + ".username"));
 
-	        } catch (FileNotFoundException e) {
-	            System.out.println("credentials.properties not found. Checking environment variables...");
-	        }
+				prop.setProperty("password",
+						credProp.getProperty(role + ".password"));
 
-	        // GitHub Secrets override everything
-	        String githubUser = System.getenv("OPENCART_USERNAME");
-	        String githubPassword = System.getenv("OPENCART_PASSWORD");
+				System.out.println("Using local credentials.properties");
 
-	        if (githubUser != null && !githubUser.isBlank()) {
-	            prop.setProperty("username", githubUser);
-	            System.out.println("Using username from GitHub Secret");
-	        }
+			} catch (FileNotFoundException e) {
 
-	        if (githubPassword != null && !githubPassword.isBlank()) {
-	            prop.setProperty("password", githubPassword);
-	            System.out.println("Using password from GitHub Secret");
-	        }
+				System.out.println("credentials.properties not found");
+			}
 
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
+			// GitHub Secrets override local credentials
+			String githubUser = System.getenv(role.toUpperCase() + "_USERNAME");
+			String githubPassword = System.getenv(role.toUpperCase() + "_PASSWORD");
 
-	    return prop;
+			if (githubUser != null && !githubUser.isBlank()) {
+
+				prop.setProperty("username", githubUser);
+
+				System.out.println("Using username from GitHub Secret");
+			}
+
+			if (githubPassword != null && !githubPassword.isBlank()) {
+
+				prop.setProperty("password", githubPassword);
+
+				System.out.println("Using password from GitHub Secret");
+			}
+
+			// Validation
+			if (prop.getProperty("username") == null ||
+				prop.getProperty("password") == null) {
+
+				throw new RuntimeException(
+						"Credentials not found for role: " + role);
+			}
+
+			// Final logging
+			System.out.println("========================================");
+			System.out.println("Executing tests with role: " + role);
+			System.out.println("Username selected: " + prop.getProperty("username"));
+			System.out.println("========================================");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return prop;
 	}
+	
 	
 	/**
 	 * take screenshot
