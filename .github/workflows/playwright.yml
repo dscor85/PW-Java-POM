@@ -1,15 +1,17 @@
 name: Playwright Java Tests
 
 on:
-  push:
-    branches:
-      - main
-
-  pull_request:
-    branches:
-      - main
-
   workflow_dispatch:
+     inputs:
+      role:
+        description: 'Role'
+        required: true
+        default: 'admin'
+        type: choice
+        options:
+          - admin
+          - editor
+          - user
 
 jobs:
   test:
@@ -48,8 +50,19 @@ jobs:
         env:
           OPENCART_USERNAME: ${{ secrets.OPENCART_USERNAME }}
           OPENCART_PASSWORD: ${{ secrets.OPENCART_PASSWORD }}
+          
+          ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+
+          EDITOR_USERNAME: ${{ secrets.EDITOR_USERNAME }}
+          EDITOR_PASSWORD: ${{ secrets.EDITOR_PASSWORD }}
+        
+          USER_USERNAME: ${{ secrets.USER_USERNAME }}
+          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+          
         run: |
           mvn test \
+          -Drole=${{ github.event.inputs.role }} \
           -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regressions.xml
 
       - name: Upload TestNG Reports
