@@ -1,5 +1,7 @@
 package com.qa.opencart.tests;
 
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -22,11 +24,38 @@ public class LoginPageTest extends BaseTest {
 		Assert.assertTrue(loginPage.isForgotPwdLink());
 
 	}
-	
+
 	@Test(priority = 3)
 	public void appLoginTest() {
-		Assert.assertTrue(loginPage.doLogin(prop.getProperty("username").trim(), 
-				prop.getProperty("password").trim()));
+		Assert.assertTrue(loginPage.doLogin(prop.getProperty("username").trim(), prop.getProperty("password").trim()));
+	}
+	
+	
+	
+	//Playwright Assertions
+	@Test(priority = 4)
+	public void locatorTestA() {
+		assertThat(page.getByPlaceholder("Search")).isAttached();;
+
+	}
+
+	@Test(priority = 5)
+	public void locatorTestB() {
+		assertThat(page.getByAltText("naveenopencart")).isVisible();
+
+	}
+
+	@Test(priority = 6)
+	public void locatorTestC() {
+		assertThat(page).hasTitle("Account Login");
+
+	}
+
+	@Test(priority = 7)
+	public void locatorTestD() {
+
+		assertThat(page.locator("//li//span[contains(text(),'123')]")).hasText("123456789");
+
 	}
 
 }

@@ -13,7 +13,7 @@ import com.qa.opencart.pages.LoginPage;
 public class BaseTest {
 
 	PlaywrightFactory pf;
-	Page page;
+	protected Page page;
 	protected Properties prop;
 
 	protected HomePage homePage;

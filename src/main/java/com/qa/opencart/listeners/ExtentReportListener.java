@@ -104,6 +104,14 @@ public class ExtentReportListener implements ITestListener {
 	}
 
 	public synchronized void onTestSkipped(ITestResult result) {
+		if (result.wasRetried()) {
+			// TestNG marks a failed attempt as SKIP when the RetryAnalyzer re-queues it
+			System.out.println((result.getMethod().getMethodName() + " failed - retrying"));
+			test.get().warning("Attempt failed - retrying: " + result.getThrowable(),
+					MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), result.getMethod().getMethodName()).build());
+			test.get().getModel().setEndTime(getTime(result.getEndMillis()));
+			return;
+		}
 		System.out.println((result.getMethod().getMethodName() + " skipped!"));
 		test.get().skip(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(), result.getMethod().getMethodName()).build());
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));

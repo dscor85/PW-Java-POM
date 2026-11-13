@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="MasterSuite" parallel="suites" thread-count="2">
+    <suite-files>
+        <suite-file path="testng-suite1.xml"/>
+        <suite-file path="testng-suite2.xml"/>
+    </suite-files>
+</suite>

@@ -3,7 +3,7 @@ package com.qa.opencart.tests;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import com.qa.opencart.base.BaseTest;
 import com.qa.opencart.constants.AppConstants;
 
@@ -35,6 +35,11 @@ public class HomePageTest extends BaseTest {
 	public void searchTest(String productName) {
 		String actualSearchHeader = homePage.doSearch(productName);
 		Assert.assertEquals(actualSearchHeader, "Search - " + productName);
+		
 	}
+
+	
+	
+	
 
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite2">
+	<listeners>
+		<listener class-name="com.qa.opencart.listeners.AnnotationTransformer" />
+	</listeners>
+	<test name="Test2">
+		<classes>
+			<class name="com.qa.opencart.tests.LoginPageTest" />
+		</classes>
+	</test>
+</suite>

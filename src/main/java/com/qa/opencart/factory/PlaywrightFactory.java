@@ -20,11 +20,12 @@ public class PlaywrightFactory {
 	BrowserContext browserContext;
 	Page page;
 	Properties prop;
-
+	
+	private static ThreadLocal<Playwright> tlPlaywright = new ThreadLocal<>();
 	private static ThreadLocal<Browser> tlBrowser = new ThreadLocal<>();
 	private static ThreadLocal<BrowserContext> tlBrowserContext = new ThreadLocal<>();
 	private static ThreadLocal<Page> tlPage = new ThreadLocal<>();
-	private static ThreadLocal<Playwright> tlPlaywright = new ThreadLocal<>();
+	
 
 	public static Playwright getPlaywright() {
 		return tlPlaywright.get();
